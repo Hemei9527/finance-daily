@@ -1,0 +1,8 @@
+title: 每日财经资讯
+description: 由 Jerry 整理的每日财经要点
+theme: minima
+timezone: Asia/Shanghai
+collections:
+  posts:
+    reverse_order: true
+permalink: /:title.html

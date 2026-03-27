@@ -21,14 +21,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Jekyll
-        uses: actions/jekyll-builder@v5
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Install dependencies
+        run: |
+          gem install jekyll bundler
+          bundle install
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --baseurl=/finance-daily
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_site'
 
   deploy:
     environment:
